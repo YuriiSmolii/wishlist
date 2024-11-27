@@ -2,93 +2,305 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Wish List</title>
+    <title>My Ultimate Wish List</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* Global Styles */
         body {
-            background-image: url('https://i.imgur.com/your-meme-image.jpg');
+            margin: 0;
+            padding: 0;
+            background-image: url('https://your-background-image-url.com/image.jpg');
             background-size: cover;
-            font-family: Arial, sans-serif;
+            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
             color: #fff;
-            text-align: center;
-            padding-top: 50px;
+            overflow-x: hidden;
         }
-        #quiz, #wishlist {
-            background: rgba(0, 0, 0, 0.7);
-            display: inline-block;
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.85);
             padding: 20px;
-            border-radius: 10px;
+            text-align: center;
+            font-size: 2.2em;
+            font-weight: 700;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            animation: slideDown 1s ease-in-out;
         }
+
+        @keyframes slideDown {
+            from { top: -100px; }
+            to { top: 0; }
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 15px;
+            text-align: center;
+            font-size: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 999;
+            animation: slideUp 1s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from { bottom: -100px; }
+            to { bottom: 0; }
+        }
+
+        /* Main Container */
+        .container {
+            margin-top: 100px;
+            margin-bottom: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 180px);
+        }
+
+        /* Quiz and Wish List Styles */
+        #quiz, #wishlist {
+            background: rgba(0, 0, 0, 0.75);
+            border-radius: 15px;
+            padding: 40px;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+            box-sizing: border-box;
+        }
+
         #wishlist {
             display: none;
         }
-        input[type="text"] {
-            padding: 10px;
-            width: 80%;
-            margin-bottom: 10px;
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
+
+        /* Typography */
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        /* Input Styles */
+        input[type="text"] {
+            padding: 15px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            border: 2px solid #ff9800;
+            border-radius: 5px;
+            font-size: 1em;
+            color: #333;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #e68900;
+        }
+
+        /* Button Styles */
         button {
-            padding: 10px 20px;
+            padding: 15px 30px;
             background: #ff9800;
             border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 500;
             color: #fff;
             cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
+            transition: background 0.3s;
+            width: 100%;
+            max-width: 400px;
         }
+
         button:hover {
             background: #e68900;
         }
+
+        /* Wish List Styles */
         ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
+            margin: 0;
+            text-align: left;
         }
+
         li {
-            padding: 5px 0;
+            padding: 15px 0;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            animation: listItemFadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes listItemFadeIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        /* Checkbox Styles */
+        input[type="checkbox"] {
+            margin-right: 15px;
+            transform: scale(1.5);
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        /* Feedback Message */
+        #feedback {
+            margin-top: 15px;
+            font-size: 1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 414px) { /* iPhone 15 Pro Max width in portrait mode */
+            header, footer {
+                font-size: 1.8em;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            p, li {
+                font-size: 1.1em;
+            }
+
+            input[type="text"], button {
+                font-size: 1em;
+            }
+
+            #quiz, #wishlist {
+                padding: 30px 20px;
+                width: 100%;
+            }
+
+            input[type="checkbox"] {
+                transform: scale(1.2);
+            }
+
+            .container {
+                margin-top: 80px;
+                margin-bottom: 70px;
+            }
+        }
+
+        /* Additional Media Queries for Landscape Mode */
+        @media (orientation: landscape) and (max-height: 414px) {
+            header, footer {
+                font-size: 1.5em;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p, li {
+                font-size: 1em;
+            }
+
+            input[type="text"], button {
+                font-size: 0.9em;
+            }
+
+            #quiz, #wishlist {
+                padding: 20px 15px;
+            }
+
+            .container {
+                margin-top: 70px;
+                margin-bottom: 60px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div id="quiz">
-        <h1>Quick Quiz</h1>
-        <p id="question"></p>
-        <input type="text" id="answer" placeholder="Your answer here">
-        <br>
-        <button onclick="checkAnswer()">Submit</button>
-        <p id="feedback"></p>
+    <!-- Header -->
+    <header>
+        My Ultimate Wish List
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Quiz Section -->
+        <div id="quiz">
+            <h1>Prove You're Worthy!</h1>
+            <p id="question"></p>
+            <input type="text" id="answer" placeholder="Type your answer here">
+            <br>
+            <button onclick="checkAnswer()">Submit Answer</button>
+            <p id="feedback"></p>
+        </div>
+
+        <!-- Wish List Section -->
+        <div id="wishlist">
+            <h1>Here's What I Wish For</h1>
+            <ul id="wishes">
+                <!-- Wish list items will be populated here -->
+            </ul>
+        </div>
     </div>
 
-    <div id="wishlist">
-        <h1>My Wish List</h1>
-        <ul id="wishes">
-            <!-- Wish list items will appear here -->
-        </ul>
-    </div>
+    <!-- Footer -->
+    <footer>
+        &copy; 2023 Your Name. All rights reserved.
+    </footer>
 
+    <!-- JavaScript -->
     <script>
-        // Quiz questions and answers
+        // Quiz Data
         const quizData = [
             {
-                question: "What is 5 + 7?",
-                answer: "12"
+                question: "What is the answer to life, the universe, and everything?",
+                answer: "42"
             },
             {
-                question: "What color do you get when you mix red and white?",
-                answer: "pink"
+                question: "What programming language is known as the language of the web?",
+                answer: "javascript"
             },
             {
-                question: "What is the capital of France?",
-                answer: "paris"
+                question: "What is the speed of light in vacuum (in km/s)?",
+                answer: "299792"
             }
         ];
 
-        // Wish list items
+        // Wish List Items
         const wishListItems = [
-            "Travel to Japan",
-            "Learn to play the guitar",
-            "Buy a new laptop",
-            "Start a blog",
-            "Get in shape"
+            "🎸 Learn to play the electric guitar",
+            "✈️ Skydive over the Grand Canyon",
+            "🚗 Buy a Tesla Model S",
+            "🌍 Travel to all 7 continents",
+            "📚 Write and publish a novel",
+            "🎥 Direct a short film",
+            "🏋️‍♂️ Bench press 300 lbs",
+            "💼 Start my own tech company",
+            "🎓 Get a master's degree",
+            "👨‍💻 Contribute to open-source projects"
         ];
 
         let currentQuestion = 0;
@@ -96,33 +308,42 @@
         // Display the first question
         document.getElementById('question').textContent = quizData[currentQuestion].question;
 
+        // Check Answer Function
         function checkAnswer() {
-            const userAnswer = document.getElementById('answer').value.toLowerCase();
+            const userAnswer = document.getElementById('answer').value.toLowerCase().trim();
             const correctAnswer = quizData[currentQuestion].answer.toLowerCase();
             const feedback = document.getElementById('feedback');
 
             if (userAnswer === correctAnswer) {
                 currentQuestion++;
                 if (currentQuestion < quizData.length) {
-                    // Next question
+                    // Display next question
                     document.getElementById('question').textContent = quizData[currentQuestion].question;
                     document.getElementById('answer').value = '';
-                    feedback.textContent = 'Correct! Next question:';
+                    feedback.textContent = 'Correct! On to the next one...';
+                    feedback.style.color = '#00e676';
                 } else {
                     // Quiz completed
                     document.getElementById('quiz').style.display = 'none';
                     displayWishList();
                 }
             } else {
-                feedback.textContent = 'Incorrect, please try again.';
+                feedback.textContent = 'Oops! That\'s not quite right. Try again.';
+                feedback.style.color = '#ff1744';
             }
         }
 
+        // Display Wish List Function
         function displayWishList() {
             const wishesUl = document.getElementById('wishes');
             wishListItems.forEach(function(item) {
                 const li = document.createElement('li');
-                li.textContent = item;
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                li.appendChild(checkbox);
+                const span = document.createElement('span');
+                span.textContent = item;
+                li.appendChild(span);
                 wishesUl.appendChild(li);
             });
             document.getElementById('wishlist').style.display = 'block';
