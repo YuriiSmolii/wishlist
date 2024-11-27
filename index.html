@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Wish List</title>
+    <style>
+        body {
+            background-image: url('https://i.imgur.com/your-meme-image.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+            padding-top: 50px;
+        }
+        #quiz, #wishlist {
+            background: rgba(0, 0, 0, 0.7);
+            display: inline-block;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        #wishlist {
+            display: none;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #ff9800;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #e68900;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="quiz">
+        <h1>Quick Quiz</h1>
+        <p id="question"></p>
+        <input type="text" id="answer" placeholder="Your answer here">
+        <br>
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="feedback"></p>
+    </div>
+
+    <div id="wishlist">
+        <h1>My Wish List</h1>
+        <ul id="wishes">
+            <!-- Wish list items will appear here -->
+        </ul>
+    </div>
+
+    <script>
+        // Quiz questions and answers
+        const quizData = [
+            {
+                question: "What is 5 + 7?",
+                answer: "12"
+            },
+            {
+                question: "What color do you get when you mix red and white?",
+                answer: "pink"
+            },
+            {
+                question: "What is the capital of France?",
+                answer: "paris"
+            }
+        ];
+
+        // Wish list items
+        const wishListItems = [
+            "Travel to Japan",
+            "Learn to play the guitar",
+            "Buy a new laptop",
+            "Start a blog",
+            "Get in shape"
+        ];
+
+        let currentQuestion = 0;
+
+        // Display the first question
+        document.getElementById('question').textContent = quizData[currentQuestion].question;
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById('answer').value.toLowerCase();
+            const correctAnswer = quizData[currentQuestion].answer.toLowerCase();
+            const feedback = document.getElementById('feedback');
+
+            if (userAnswer === correctAnswer) {
+                currentQuestion++;
+                if (currentQuestion < quizData.length) {
+                    // Next question
+                    document.getElementById('question').textContent = quizData[currentQuestion].question;
+                    document.getElementById('answer').value = '';
+                    feedback.textContent = 'Correct! Next question:';
+                } else {
+                    // Quiz completed
+                    document.getElementById('quiz').style.display = 'none';
+                    displayWishList();
+                }
+            } else {
+                feedback.textContent = 'Incorrect, please try again.';
+            }
+        }
+
+        function displayWishList() {
+            const wishesUl = document.getElementById('wishes');
+            wishListItems.forEach(function(item) {
+                const li = document.createElement('li');
+                li.textContent = item;
+                wishesUl.appendChild(li);
+            });
+            document.getElementById('wishlist').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
