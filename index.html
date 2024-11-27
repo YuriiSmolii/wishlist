@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Список Бажань Юрашки</title>
+    <title>WishList</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url(https://hips.hearstapps.com/hmg-prod/images/lux-men-gifts-66bbb4040ecde.jpg');
+            background-image: url('https://hips.hearstapps.com/hmg-prod/images/lux-men-gifts-66bbb4040ecde.jpg');
             background-size: cover;
             background-attachment: fixed;
             font-family: 'Poppins', sans-serif;
@@ -132,6 +132,7 @@
 
         button:hover {
             background: #e68900;
+            box-shadow: 0 0 10px #e68900;
         }
 
         /* Стилі для списку бажань */
@@ -166,6 +167,22 @@
             transform: scale(1.5);
             cursor: pointer;
             accent-color: #ff9800;
+        }
+
+        /* Стилі для кнопки-посилання */
+        .link-button {
+            margin-left: auto;
+            padding: 10px 15px;
+            background: #ff9800;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+
+        .link-button:hover {
+            background: #e68900;
         }
 
         /* Повідомлення зворотного зв'язку */
@@ -212,26 +229,20 @@
                 margin-bottom: 70px;
             }
         }
-
-        /* Анімація при наведенні на кнопку */
-        button:hover {
-            background: #e68900;
-            box-shadow: 0 0 10px #e68900;
-        }
     </style>
 </head>
 <body>
 
     <!-- Заголовок -->
     <header>
-        Мій Список Бажань
+        Список Бажань Юрашки
     </header>
 
     <!-- Основний контент -->
     <div class="container">
         <!-- Розділ вікторини -->
         <div id="quiz">
-            <h1 class="glow">Доведи свою гідність!</h1>
+            <h1 class="glow">Короткий квіз! Ха-ха</h1>
             <p id="question"></p>
             <input type="text" id="answer" placeholder="Введіть вашу відповідь">
             <br>
@@ -241,7 +252,7 @@
 
         <!-- Розділ списку бажань -->
         <div id="wishlist">
-            <h1 class="glow">Ось мої бажання</h1>
+            <h1 class="glow">Мої мужчинські скромні побажання</h1>
             <ul id="wishes">
                 <!-- Елементи списку бажань будуть додані тут -->
             </ul>
@@ -250,7 +261,7 @@
 
     <!-- Футер -->
     <footer>
-        &copy; 2023 Ваше Ім'я. Всі права захищено.
+        &copy; 2024 пан Юрій. Всі права захищено.
     </footer>
 
     <!-- JavaScript -->
@@ -258,39 +269,51 @@
         // Дані вікторини
         const quizData = [
             {
-                question: "Яке число є сумою квадратів перших трьох простих чисел?",
+                question: "Яке число є сумою квадратів перших трьох простих чисел? Почнемо з простого!",
                 answer: "38",
                 strange: true
             },
             {
-                question: "Скільки молекул води в одній чайній ложці?",
+                question: "Скільки молекул води в одній чайній ложці? Ну тут ізі :)",
                 answer: "дуже багато",
                 strange: true
             },
             {
-                question: "Яка столиця України?",
+                question: "Яка столиця України? Складне питання",
                 answer: "київ",
                 strange: false
             },
             {
-                question: "Скільки буде 2 + 2?",
+                question: "Скільки буде 2 + 2? Ну і останнє",
                 answer: "4",
                 strange: false
             }
         ];
 
-        // Список бажань
+        // Список бажань з посиланнями
         const wishListItems = [
-            "🎸 Навчитися грати на електрогітарі",
-            "✈️ Стрибнути з парашутом над Карпатами",
-            "🚗 Придбати Tesla Model S",
-            "🌍 Подорожувати всіма континентами",
-            "📚 Написати та видати роман",
-            "🎥 Зняти короткометражний фільм",
-            "🏋️‍♂️ Підняти 150 кг на жимі лежачи",
-            "💼 Відкрити власну IT-компанію",
-            "🎓 Отримати ступінь магістра",
-            "👨‍💻 Внести вклад у проекти з відкритим кодом"
+            {
+                text: "Неокласичний годинник Сasio(GShock, Edifice), Curren та інші (може бути паль)",
+                link: "https://www.instagram.com/p/C5EexsiL0eY/?igsh=MWliMDNvcTN3dGlwZQ=="
+            },
+            {
+                text: "✈️ Стрибнути з парашутом над Карпатами",
+                link: "https://example.com/skydiving"
+            },
+            {
+                text: "🚗 Придбати Tesla Model S",
+                link: "https://www.tesla.com/models"
+            },
+            // ... додайте інші елементи аналогічно
+        ];
+
+        // Масив успішних повідомлень
+        const successMessages = [
+            "Настя розумниця!",
+            "Молодчинка!",
+            "Відмінно, Настя!",
+            "Ти справжній геній!",
+            "Прекрасно виконано!"
         ];
 
         let currentQuestion = 0;
@@ -298,23 +321,24 @@
         // Відображення першого запитання
         document.getElementById('question').textContent = quizData[currentQuestion].question;
 
+        // Функція отримання випадкового успішного повідомлення
+        function getRandomSuccessMessage() {
+            const index = Math.floor(Math.random() * successMessages.length);
+            return successMessages[index];
+        }
+
         // Функція перевірки відповіді
         function checkAnswer() {
             const userAnswer = document.getElementById('answer').value.toLowerCase().trim();
             const correctAnswer = quizData[currentQuestion].answer.toLowerCase();
             const feedback = document.getElementById('feedback');
 
-            if (quizData[currentQuestion].strange) {
-                // Для дивних запитань будь-яка відповідь вважається неправильною
-                feedback.textContent = 'Настя розумниця! Молодець!';
-                feedback.style.color = '#00e676';
-            } else if (userAnswer === correctAnswer) {
-                feedback.textContent = 'Настя розумниця! Молодець!';
-                feedback.style.color = '#00e676';
-            } else {
-                feedback.textContent = 'Настя розумниця! Молодець!';
-                feedback.style.color = '#00e676';
-            }
+            // Отримуємо випадкове успішне повідомлення
+            const successMessage = getRandomSuccessMessage();
+
+            // Відображаємо успішне повідомлення незалежно від відповіді
+            feedback.textContent = successMessage;
+            feedback.style.color = '#00e676';
 
             currentQuestion++;
             if (currentQuestion < quizData.length) {
@@ -338,12 +362,23 @@
             const wishesUl = document.getElementById('wishes');
             wishListItems.forEach(function(item) {
                 const li = document.createElement('li');
+
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 li.appendChild(checkbox);
+
                 const span = document.createElement('span');
-                span.textContent = item;
+                span.textContent = item.text;
                 li.appendChild(span);
+
+                // Додавання кнопки-посилання
+                const linkButton = document.createElement('a');
+                linkButton.href = item.link;
+                linkButton.target = '_blank';
+                linkButton.textContent = 'Дізнатися більше';
+                linkButton.classList.add('link-button');
+                li.appendChild(linkButton);
+
                 wishesUl.appendChild(li);
             });
             document.getElementById('wishlist').style.display = 'block';
