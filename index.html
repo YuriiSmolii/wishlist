@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>My Ultimate Wish List</title>
+    <title>Список Бажань Юрашки</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Global Styles */
+        /* Глобальні стилі */
         body {
             margin: 0;
             padding: 0;
-            background-image: url('https://hips.hearstapps.com/hmg-prod/images/lux-men-gifts-66bbb4040ecde.jpg');
+            background-image: url(https://hips.hearstapps.com/hmg-prod/images/lux-men-gifts-66bbb4040ecde.jpg');
             background-size: cover;
             background-attachment: fixed;
             font-family: 'Poppins', sans-serif;
@@ -19,7 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* Header */
+        /* Заголовок */
         header {
             background: rgba(0, 0, 0, 0.85);
             padding: 20px;
@@ -38,7 +38,7 @@
             to { top: 0; }
         }
 
-        /* Footer */
+        /* Футер */
         footer {
             background: rgba(0, 0, 0, 0.85);
             padding: 15px;
@@ -56,7 +56,7 @@
             to { bottom: 0; }
         }
 
-        /* Main Container */
+        /* Основний контейнер */
         .container {
             margin-top: 100px;
             margin-bottom: 80px;
@@ -66,7 +66,7 @@
             min-height: calc(100vh - 180px);
         }
 
-        /* Quiz and Wish List Styles */
+        /* Стилі для вікторини та списку бажань */
         #quiz, #wishlist {
             background: rgba(0, 0, 0, 0.75);
             border-radius: 15px;
@@ -87,7 +87,7 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* Typography */
+        /* Типографіка */
         h1 {
             margin-bottom: 20px;
             font-size: 2em;
@@ -98,7 +98,7 @@
             font-size: 1.2em;
         }
 
-        /* Input Styles */
+        /* Стилі для вводу */
         input[type="text"] {
             padding: 15px;
             width: 100%;
@@ -115,7 +115,7 @@
             border-color: #e68900;
         }
 
-        /* Button Styles */
+        /* Стилі для кнопки */
         button {
             padding: 15px 30px;
             background: #ff9800;
@@ -134,7 +134,7 @@
             background: #e68900;
         }
 
-        /* Wish List Styles */
+        /* Стилі для списку бажань */
         ul {
             list-style: none;
             padding: 0;
@@ -160,7 +160,7 @@
             border-bottom: none;
         }
 
-        /* Checkbox Styles */
+        /* Стилі для чекбоксів */
         input[type="checkbox"] {
             margin-right: 15px;
             transform: scale(1.5);
@@ -168,14 +168,19 @@
             accent-color: #ff9800;
         }
 
-        /* Feedback Message */
+        /* Повідомлення зворотного зв'язку */
         #feedback {
             margin-top: 15px;
             font-size: 1em;
         }
 
-        /* Responsive Design */
-        @media (max-width: 414px) { /* iPhone 15 Pro Max width in portrait mode */
+        /* Додатковий стиль */
+        .glow {
+            text-shadow: 0 0 10px #ff9800;
+        }
+
+        /* Адаптивний дизайн */
+        @media (max-width: 414px) {
             header, footer {
                 font-size: 1.8em;
                 padding: 15px;
@@ -208,132 +213,127 @@
             }
         }
 
-        /* Additional Media Queries for Landscape Mode */
-        @media (orientation: landscape) and (max-height: 414px) {
-            header, footer {
-                font-size: 1.5em;
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 1.5em;
-            }
-
-            p, li {
-                font-size: 1em;
-            }
-
-            input[type="text"], button {
-                font-size: 0.9em;
-            }
-
-            #quiz, #wishlist {
-                padding: 20px 15px;
-            }
-
-            .container {
-                margin-top: 70px;
-                margin-bottom: 60px;
-            }
+        /* Анімація при наведенні на кнопку */
+        button:hover {
+            background: #e68900;
+            box-shadow: 0 0 10px #e68900;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Заголовок -->
     <header>
-        My Ultimate Wish List
+        Мій Список Бажань
     </header>
 
-    <!-- Main Content -->
+    <!-- Основний контент -->
     <div class="container">
-        <!-- Quiz Section -->
+        <!-- Розділ вікторини -->
         <div id="quiz">
-            <h1>Prove You're Worthy!</h1>
+            <h1 class="glow">Доведи свою гідність!</h1>
             <p id="question"></p>
-            <input type="text" id="answer" placeholder="Type your answer here">
+            <input type="text" id="answer" placeholder="Введіть вашу відповідь">
             <br>
-            <button onclick="checkAnswer()">Submit Answer</button>
+            <button onclick="checkAnswer()">Відправити відповідь</button>
             <p id="feedback"></p>
         </div>
 
-        <!-- Wish List Section -->
+        <!-- Розділ списку бажань -->
         <div id="wishlist">
-            <h1>Here's What I Wish For</h1>
+            <h1 class="glow">Ось мої бажання</h1>
             <ul id="wishes">
-                <!-- Wish list items will be populated here -->
+                <!-- Елементи списку бажань будуть додані тут -->
             </ul>
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Футер -->
     <footer>
-        &copy; 2023 Your Name. All rights reserved.
+        &copy; 2023 Ваше Ім'я. Всі права захищено.
     </footer>
 
     <!-- JavaScript -->
     <script>
-        // Quiz Data
+        // Дані вікторини
         const quizData = [
             {
-                question: "What is the answer to life, the universe, and everything?",
-                answer: "42"
+                question: "Яке число є сумою квадратів перших трьох простих чисел?",
+                answer: "38",
+                strange: true
             },
             {
-                question: "What programming language is known as the language of the web?",
-                answer: "javascript"
+                question: "Скільки молекул води в одній чайній ложці?",
+                answer: "дуже багато",
+                strange: true
             },
             {
-                question: "What is the speed of light in vacuum (in km/s)?",
-                answer: "299792"
+                question: "Яка столиця України?",
+                answer: "київ",
+                strange: false
+            },
+            {
+                question: "Скільки буде 2 + 2?",
+                answer: "4",
+                strange: false
             }
         ];
 
-        // Wish List Items
+        // Список бажань
         const wishListItems = [
-            "🎸 Learn to play the electric guitar",
-            "✈️ Skydive over the Grand Canyon",
-            "🚗 Buy a Tesla Model S",
-            "🌍 Travel to all 7 continents",
-            "📚 Write and publish a novel",
-            "🎥 Direct a short film",
-            "🏋️‍♂️ Bench press 300 lbs",
-            "💼 Start my own tech company",
-            "🎓 Get a master's degree",
-            "👨‍💻 Contribute to open-source projects"
+            "🎸 Навчитися грати на електрогітарі",
+            "✈️ Стрибнути з парашутом над Карпатами",
+            "🚗 Придбати Tesla Model S",
+            "🌍 Подорожувати всіма континентами",
+            "📚 Написати та видати роман",
+            "🎥 Зняти короткометражний фільм",
+            "🏋️‍♂️ Підняти 150 кг на жимі лежачи",
+            "💼 Відкрити власну IT-компанію",
+            "🎓 Отримати ступінь магістра",
+            "👨‍💻 Внести вклад у проекти з відкритим кодом"
         ];
 
         let currentQuestion = 0;
 
-        // Display the first question
+        // Відображення першого запитання
         document.getElementById('question').textContent = quizData[currentQuestion].question;
 
-        // Check Answer Function
+        // Функція перевірки відповіді
         function checkAnswer() {
             const userAnswer = document.getElementById('answer').value.toLowerCase().trim();
             const correctAnswer = quizData[currentQuestion].answer.toLowerCase();
             const feedback = document.getElementById('feedback');
 
-            if (userAnswer === correctAnswer) {
-                currentQuestion++;
-                if (currentQuestion < quizData.length) {
-                    // Display next question
+            if (quizData[currentQuestion].strange) {
+                // Для дивних запитань будь-яка відповідь вважається неправильною
+                feedback.textContent = 'Настя розумниця! Молодець!';
+                feedback.style.color = '#00e676';
+            } else if (userAnswer === correctAnswer) {
+                feedback.textContent = 'Настя розумниця! Молодець!';
+                feedback.style.color = '#00e676';
+            } else {
+                feedback.textContent = 'Настя розумниця! Молодець!';
+                feedback.style.color = '#00e676';
+            }
+
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                // Показуємо наступне запитання
+                setTimeout(() => {
                     document.getElementById('question').textContent = quizData[currentQuestion].question;
                     document.getElementById('answer').value = '';
-                    feedback.textContent = 'Correct! On to the next one...';
-                    feedback.style.color = '#00e676';
-                } else {
-                    // Quiz completed
+                    feedback.textContent = '';
+                }, 1500);
+            } else {
+                // Вікторина завершена
+                setTimeout(() => {
                     document.getElementById('quiz').style.display = 'none';
                     displayWishList();
-                }
-            } else {
-                feedback.textContent = 'Oops! That\'s not quite right. Try again.';
-                feedback.style.color = '#ff1744';
+                }, 1500);
             }
         }
 
-        // Display Wish List Function
+        // Функція відображення списку бажань
         function displayWishList() {
             const wishesUl = document.getElementById('wishes');
             wishListItems.forEach(function(item) {
